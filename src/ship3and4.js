@@ -3,7 +3,7 @@
 
 import calculateAvailablePositions from "./chooseNewPositions";
 
-function placeShipThreeAndFour(grValue, modValue, clkCount) {
+function placeShipThreeAndFour(grValue, modValue, clkCount, rotateFactor) {
   let availablePositions = calculateAvailablePositions(modValue);
   let shipThreePositions = [];
   let position = grValue;
@@ -31,6 +31,12 @@ function placeShipThreeAndFour(grValue, modValue, clkCount) {
     for (let i = initialPosition; i <= finalPosition; i++) {
       shipThreePositions.push(i);
     }
+  } else if (rotateFactor == true) {
+    const ship1Vertical = rotateShip2(grValue, modValue, rotateFactor);
+    for (let pos in ship1Vertical) {
+      shipThreePositions.push(ship1Vertical[pos]);
+    }
+    console.log(shipThreePositions);
   }
 
   return shipThreePositions;

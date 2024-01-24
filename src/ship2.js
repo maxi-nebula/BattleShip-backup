@@ -1,8 +1,9 @@
 /** @format */
 
 import calculateAvailablePositions from "./chooseNewPositions";
+import rotateShip2 from "./rotator2";
 
-function placeShipTwo(grValue, modValue, clkCount) {
+function placeShipTwo(grValue, modValue, clkCount, rotateFactor) {
   let availablePositions = calculateAvailablePositions(modValue);
   let shipTwoPositions = [];
   let position = grValue;
@@ -30,6 +31,12 @@ function placeShipTwo(grValue, modValue, clkCount) {
     for (let i = initialPosition; i <= finalPosition; i++) {
       shipTwoPositions.push(i);
     }
+  } else if (rotateFactor == true) {
+    const ship2Vertical = rotateShip2(grValue, modValue, rotateFactor);
+    for (let pos in ship2Vertical) {
+      shipTwoPositions.push(ship2Vertical[pos]);
+    }
+    console.log(shipTwoPositions);
   }
 
   return shipTwoPositions;

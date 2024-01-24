@@ -11,6 +11,7 @@ const rotateBtn = document.getElementById("rotator");
 
 let rotateFactor = false;
 rotateBtn.addEventListener("click", () => {
+  console.log("clicked");
   rotateFactor = true;
 });
 
@@ -35,12 +36,15 @@ function placeShips(gridValue, clkCount, event) {
       rotateFactor
     );
 
-    console.log(gridValue);
-
     applyStyle(ship2Positions);
     logOccupiedPositions(ship2Positions, event);
   } else if (clkCount == 3) {
-    const ship3Positions = placeShipThreeAndFour(gridValue, modValue, clkCount);
+    const ship3Positions = placeShipThreeAndFour(
+      gridValue,
+      modValue,
+      clkCount,
+      rotateFactor
+    );
 
     applyStyle(ship3Positions);
     logOccupiedPositions(ship3Positions, event);

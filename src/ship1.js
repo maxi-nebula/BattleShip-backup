@@ -1,6 +1,6 @@
 /** @format */
 import calculateAvailablePositions from "./chooseNewPositions";
-import rotateShip from "./rotator";
+import rotateShip from "./rotator1";
 
 function placeshipOne(grValue, modValue, clkCount, rotateFactor) {
   let availablePositions = calculateAvailablePositions(modValue);
