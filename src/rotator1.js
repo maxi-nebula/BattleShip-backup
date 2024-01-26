@@ -8,6 +8,16 @@ function rotateShip(grVal, mVal, rtFactor) {
   let temp = (grVal / 10).toString();
   let digit = temp[0];
 
+  if (grVal == 100) {
+    let initialPosition = parseInt(grVal) - 40;
+    console.log(initialPosition);
+    let finalPosition = parseInt(grVal);
+    for (let i = initialPosition; i <= finalPosition; ) {
+      ship1Vertical.push(i);
+      i = i + 10;
+    }
+  }
+
   if (digit < 6) {
     for (let i = initialPosition; i <= finalPosition; ) {
       ship1Vertical.push(i);
@@ -38,6 +48,7 @@ function rotateShip(grVal, mVal, rtFactor) {
       }
     } else if (digit == 9) {
       let initialPosition = parseInt(grVal) - 40;
+      console.log(initialPosition);
       let finalPosition = parseInt(grVal);
       for (let i = initialPosition; i <= finalPosition; ) {
         ship1Vertical.push(i);

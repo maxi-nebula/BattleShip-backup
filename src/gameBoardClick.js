@@ -1,6 +1,7 @@
 /** @format */
 import placeShips from "./placeShips";
 import "../src/style.css";
+import logOccupiedPositions from "./logOccupiedPositions";
 const rotateBtn = document.getElementById("rotator");
 let clickCount = 0;
 let rotateFactor = false;
@@ -19,8 +20,6 @@ function gameBoardClick() {
         if (clickCount <= 5) {
           placeShips(grid.value, clickCount, rotateFactor);
           rotateFactor = false;
-        } else {
-          console.log("click count exceeded 5 ..starting game");
         }
       },
       { once: true }

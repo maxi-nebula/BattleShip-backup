@@ -8,7 +8,7 @@ function placeShipTwo(grValue, modValue, clkCount, rotateFactor) {
   let shipTwoPositions = [];
   let position = grValue;
   let finalPosition = modValue + 3;
-  console.log(`rotate factor inside ship 2 is ${rotateFactor}`);
+
   if (rotateFactor == false) {
     if (modValue <= 7 && modValue != 0) {
       for (let i = parseInt(modValue); i <= finalPosition; i++) {

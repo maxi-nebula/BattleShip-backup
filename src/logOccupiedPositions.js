@@ -6,7 +6,7 @@ function logOccupiedPositions(incomingPositions) {
   for (const position in incomingPositions) {
     occupiedPositions.push(incomingPositions[position]);
   }
-  removeEventListener(occupiedPositions);
+  //  removeEventListener(occupiedPositions);
   return occupiedPositions;
 }
 
