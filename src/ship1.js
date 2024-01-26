@@ -46,7 +46,6 @@ function placeshipOne(grValue, modValue, clkCount, rotateFactor) {
     for (let pos in ship1Vertical) {
       shipOnePositions.push(ship1Vertical[pos]);
     }
-    console.log(shipOnePositions);
   }
 
   return shipOnePositions;

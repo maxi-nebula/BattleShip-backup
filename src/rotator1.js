@@ -2,8 +2,6 @@
 
 import calculateAvailablePositions from "./chooseNewPositions";
 function rotateShip(grVal, mVal, rtFactor) {
-  console.log({ grVal, mVal, rtFactor });
-
   let initialPosition = parseInt(grVal);
   let finalPosition = parseInt(grVal) + 40;
   let ship1Vertical = [];
