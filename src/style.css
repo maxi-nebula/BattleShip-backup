@@ -4,7 +4,7 @@
   --grid-rows: 1;
 }
 
-#container {
+.container {
   display: grid;
   height: 500px;
   width: 300px;
@@ -21,8 +21,27 @@
   text-align: center;
   cursor: pointer;
 }
+
+.grid-item1 {
+  padding: 1.5rem;
+  border: 0.1px solid rgb(0, 255, 242);
+  background-color: rgba(255, 255, 255, 0.877);
+  text-align: center;
+  cursor: pointer;
+}
 .player_name {
-  text-align: justify;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.title_header {
+  height: 80px;
+  background-color: rgb(73, 72, 72);
+  font-size: 1.5rem;
+  color: white;
+  padding-bottom: 10px;
+  text-align: center;
 }
 
 .ship {
@@ -30,9 +49,7 @@
 }
 
 .button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding-left: 500px;
 }
 .rotate_button {
   background-color: rgb(7, 7, 7);
@@ -42,4 +59,44 @@
   width: 150px;
   height: 50px;
   border-radius: 3px;
+}
+
+.rotate_button_hide {
+  display: none;
+}
+.attack_button_hide {
+  display: none;
+}
+.attack_button_appear {
+  display: block;
+  background-color: rgb(7, 7, 7);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  width: 150px;
+  height: 50px;
+  border-radius: 3px;
+}
+.message_board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  text-align: center;
+  width: 500px;
+  height: 50px;
+  padding-top: 10px;
+}
+.message_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.both_containers {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
 }
