@@ -2,11 +2,11 @@
 
 import { indexOf } from "lodash";
 
-function chooseRandomNumber() {
-  const allBotGrids = document.querySelectorAll(".grid-item1");
+function chooseRandomNumber(availablePositions) {
+  //const allBotGrids = document.querySelectorAll(".grid-item1");
 
-  const random = Math.floor(Math.random() * allBotGrids.length);
-  let gridValue = allBotGrids[random].value;
+  const random = Math.floor(Math.random() * availablePositions.length);
+  let gridValue = availablePositions[random];
 
   return gridValue;
 }

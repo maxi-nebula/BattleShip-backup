@@ -1,8 +1,9 @@
 /** @format */
 import "../src/style.css";
 
-function applyStyle(occupiedPositions) {
-  const gameBoardGrids = document.querySelectorAll(".grid-item");
+function applyStyle(occupiedPositions, item) {
+  const gameBoardGrids = document.querySelectorAll(`.${item}`);
+
   for (const position in occupiedPositions) {
     gameBoardGrids.forEach((grid) => {
       if (grid.value == occupiedPositions[position]) {
