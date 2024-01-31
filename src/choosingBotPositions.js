@@ -1,25 +1,55 @@
 /** @format */
 
 import botRotateFactor from "./botRotateFactor";
-import placeShips from "./placeShips";
+
 import placeshipOne from "./ship1";
+import placeShipTwo from "./ship2";
+import chooseRandomNumber from "./botRandomNumber";
+import { indexOf } from "lodash";
 
 function choosingBotPositions() {
-  const rotateFactor = botRotateFactor();
   const allBotGrids = document.querySelectorAll(".grid-item1");
-  const random = Math.floor(Math.random() * allBotGrids.length);
+  const availablePositions = [];
+  const availablePositionsWithout = [];
+  allBotGrids.forEach((grid) => {
+    availablePositions.push(grid.value);
+  });
+  const logBotChosenPostions = [];
 
-  let gridValue = allBotGrids[random].value;
-  let modValue = gridValue % 10;
-  console.log(gridValue, rotateFactor);
-  for (let i = 1; i <= 1; i++) {
-    const bShipOnePositions = placeshipOne(
-      gridValue,
-      modValue,
-      i,
-      rotateFactor
-    );
-    console.log(bShipOnePositions);
+  for (let i = 1; i <= 2; i++) {
+    if (i == 1) {
+      let gridValue = chooseRandomNumber();
+      const rotateFactor = botRotateFactor();
+
+      let modValue = gridValue % 10;
+      const bShipOnePositions = placeshipOne(
+        gridValue,
+        modValue,
+        i,
+        rotateFactor
+      );
+
+      bShipOnePositions.forEach((position) => {
+        logBotChosenPostions.push(position);
+      });
+      console.log(logBotChosenPostions);
+    } else if (i == 2) {
+      let gridValue = chooseRandomNumber();
+
+      const rotateFactor = botRotateFactor();
+
+      let modValue = gridValue % 10;
+      const bShipTwoPositions = placeShipTwo(
+        gridValue,
+        modValue,
+        i,
+        rotateFactor
+      );
+
+      bShipTwoPositions.forEach((position) => {
+        logBotChosenPostions.push(position);
+      });
+    }
   }
 }
 
