@@ -85,7 +85,7 @@
 
 .both_containers {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -104,12 +104,21 @@
   visibility: hidden;
 }
 
-.mark_hit {
+.mark_red {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: red;
-  font-size: 1.2rem;
+  background-color: rgb(199, 129, 129);
+  font-size: 10px;
+  font-weight: bolder;
+  align-items: center;
+}
+.mark_green {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(129, 199, 146);
+  font-size: 10px;
   font-weight: bolder;
   align-items: center;
 }

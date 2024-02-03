@@ -12,10 +12,16 @@ import applyStyle from "./applyStyle";
 import playerAttack from "./playerAttack";
 import messageBoard from "./messageBoard";
 import enemyAttack from "./enemyAttack";
-
+let allPlayerpositions = [];
 function choosingBotPositions() {
   const allBotGrids = document.querySelectorAll(".grid-item1");
+  const allPlayerGrids = document.querySelectorAll(".grid-item1");
 
+  allPlayerGrids.forEach((grid) => {
+    allPlayerpositions.push(grid.value);
+  });
+
+  console.log(allPlayerpositions);
   const availablePositions = [];
   const availablePositionsBackUp = [];
   allBotGrids.forEach((grid) => {
@@ -151,23 +157,15 @@ function choosingBotPositions() {
     }
   }
 
-  console.log(logBotChosenPostions);
-
   allBotGrids.forEach((grid) => {
     grid.addEventListener("click", () => {
-      const isAttacked = playerAttack(grid.value, logBotChosenPostions);
-      console.log(isAttacked);
-      if (isAttacked == true) {
-        messageBoard("It's a hit..");
-        grid.classList.add("mark_hit");
-        grid.innerHTML = "X";
-      } else if (isAttacked == false) {
-        messageBoard("It's a miss..");
-      }
+      const isAttacked = playerAttack(
+        grid,
+        logBotChosenPostions,
+        allPlayerpositions
+      );
     });
   });
-
-  enemyAttack(availablePositionsBackUp);
 }
 
 export default choosingBotPositions;
