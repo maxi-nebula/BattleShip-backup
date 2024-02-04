@@ -21,7 +21,6 @@ function choosingBotPositions() {
     allPlayerpositions.push(grid.value);
   });
 
-  console.log(allPlayerpositions);
   const availablePositions = [];
   const availablePositionsBackUp = [];
   allBotGrids.forEach((grid) => {

@@ -1,4 +1,5 @@
 /** @format */
+
 const attackedPositions = [];
 
 function logAttackedPositions(incomingPositions) {

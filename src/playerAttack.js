@@ -40,13 +40,13 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
   }
   const targetedPlayerPosition = chooseRandomNumber(allPlayerpositions);
   const alreadyAttackedPositions = logAttackedPositions(targetedPlayerPosition);
-  console.log(targetedPlayerPosition);
 
   allPlayerpositions = removeTargetedPlayerPosition(
     allPlayerpositions,
     targetedPlayerPosition
   );
 
+  enemyAttack(targetedPlayerPosition);
   return isEnemyAttacked;
 }
 export default playerAttack;

@@ -3,21 +3,22 @@
 import logOccupiedPositions from "./logOccupiedPositions";
 import logAttackedPositions from "./logAttackedPositions";
 import chooseRandomNumber from "./botRandomNumber";
+let isPlayerAttacked = false;
+function enemyAttack(botchosenPosition) {
+  const convertedBotChosenPostion = parseInt(botchosenPosition);
+  console.log(convertedBotChosenPostion);
 
-function enemyAttack() {
-  let isPlayerAttacked = false;
-  const botchosenPosition = chooseRandomNumber();
-  console.log(`target positon is ${botchosenPosition}`);
   const playerOccupiedPostions = logOccupiedPositions();
 
   playerOccupiedPostions.forEach((occupiedPosition) => {
-    if (occupiedPosition == botchosenPosition.value) {
+    if (occupiedPosition == botchosenPosition) {
       isPlayerAttacked == true;
-    } else {
-      isPlayerAttacked == false;
+      console.log("hit");
+      const hitGrid = document.getElementById(`p${convertedBotChosenPostion}`);
+      console.log(hitGrid);
+      hitGrid.className = "mark_red";
     }
   });
-  console.log(isPlayerAttacked);
 
   return isPlayerAttacked;
 }
