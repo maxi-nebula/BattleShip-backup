@@ -3,9 +3,16 @@ import messageBoard from "./messageBoard";
 import enemyAttack from "./enemyAttack";
 import chooseRandomNumber from "./botRandomNumber";
 import logAttackedPositions from "./logAttackedPositions";
+import setNextTarget from "./setNextTarget";
 import { indexOf } from "lodash";
 
+const calculateTarget = true;
+let isPlayerAttacked = false;
+let trigger = 0;
+let possibleNextTargets = [];
+
 function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
+  console.log(`trigger is ${trigger}`);
   let isEnemyAttacked = false;
 
   logBotChosenPostions.forEach((bposition) => {
@@ -21,11 +28,6 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
   } else if (isEnemyAttacked == false) {
     messageBoard("It's a miss..");
   }
-  /* function removeTargetedPlayerPosition(allPlayerpositions, targetedPosition) {
-    return allPlayerpositions.filter(function (ele) {
-      return ele != targetedPosition;
-    });
-  }*/
 
   function removeTargetedPlayerPosition(
     allPlayerpositions,
@@ -38,15 +40,51 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
     );
     return allPlayerpositions;
   }
-  const targetedPlayerPosition = chooseRandomNumber(allPlayerpositions);
-  const alreadyAttackedPositions = logAttackedPositions(targetedPlayerPosition);
+  if (trigger == 0) {
+    const targetedPlayerPosition = chooseRandomNumber(
+      allPlayerpositions,
+      trigger
+    );
+    const alreadyAttackedPositions = logAttackedPositions(
+      targetedPlayerPosition
+    );
 
-  allPlayerpositions = removeTargetedPlayerPosition(
-    allPlayerpositions,
-    targetedPlayerPosition
-  );
+    allPlayerpositions = removeTargetedPlayerPosition(
+      allPlayerpositions,
+      targetedPlayerPosition
+    );
+    isPlayerAttacked = enemyAttack(targetedPlayerPosition);
+    trigger = isPlayerAttacked.hitTrigger;
+    if (trigger == 1) {
+      possibleNextTargets = setNextTarget(isPlayerAttacked.botchosenPosition);
+    }
+  } else if (trigger == 1) {
+    console.log(possibleNextTargets);
+    const targetedPlayerPosition = chooseRandomNumber(possibleNextTargets);
+    possibleNextTargets = removeTargetedPlayerPosition(
+      possibleNextTargets,
+      targetedPlayerPosition
+    );
+    if (possibleNextTargets.length != 0) {
+      trigger == 1;
+      isPlayerAttacked = enemyAttack(targetedPlayerPosition, trigger);
+    } else {
+      console.log("array is empty");
+      trigger == 0;
+      isPlayerAttacked = enemyAttack(allPlayerpositions, trigger);
+    }
+  }
 
-  enemyAttack(targetedPlayerPosition);
+  //trigger = isPlayerAttacked.hitTrigger;
+  /*else if (isPlayerAttacked.isPlayerAttacked == true) {
+    const possibleNextTargets = setNextTarget(
+      isPlayerAttacked.botchosenPosition
+    );
+    console.log(possibleNextTargets);
+    const targetedPlayerPosition = chooseRandomNumber(possibleNextTargets);
+    isPlayerAttacked = enemyAttack(targetedPlayerPosition);
+  }*/
+
   return isEnemyAttacked;
 }
 export default playerAttack;

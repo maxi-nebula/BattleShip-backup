@@ -1,10 +1,17 @@
 /** @format */
 
 import logOccupiedPositions from "./logOccupiedPositions";
-import logAttackedPositions from "./logAttackedPositions";
+import setNextTarget from "./setNextTarget";
 import chooseRandomNumber from "./botRandomNumber";
+
 let isPlayerAttacked = false;
-function enemyAttack(botchosenPosition) {
+let hitTrigger = 0;
+
+function enemyAttack(botchosenPosition, incomingTriggerStatus) {
+  if (incomingTriggerStatus == 0) {
+    console.log("hit trigger is 0..");
+    hitTrigger == 0;
+  }
   const convertedBotChosenPostion = parseInt(botchosenPosition);
   console.log(convertedBotChosenPostion);
 
@@ -17,10 +24,12 @@ function enemyAttack(botchosenPosition) {
       const hitGrid = document.getElementById(`p${convertedBotChosenPostion}`);
       console.log(hitGrid);
       hitGrid.className = "mark_red";
+      isPlayerAttacked = true;
+      hitTrigger = 1;
     }
   });
 
-  return isPlayerAttacked;
+  return { isPlayerAttacked, botchosenPosition, hitTrigger };
 }
 
 export default enemyAttack;

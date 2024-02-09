@@ -10,8 +10,7 @@ import placeShipFive from "./ship5";
 import chooseRandomNumber from "./botRandomNumber";
 import applyStyle from "./applyStyle";
 import playerAttack from "./playerAttack";
-import messageBoard from "./messageBoard";
-import enemyAttack from "./enemyAttack";
+
 let allPlayerpositions = [];
 function choosingBotPositions() {
   const allBotGrids = document.querySelectorAll(".grid-item1");

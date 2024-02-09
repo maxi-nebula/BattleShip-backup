@@ -48,7 +48,7 @@ function rotateShip(grVal, mVal, rtFactor) {
       }
     } else if (digit == 9) {
       let initialPosition = parseInt(grVal) - 40;
-      console.log(initialPosition);
+
       let finalPosition = parseInt(grVal);
       for (let i = initialPosition; i <= finalPosition; ) {
         ship1Vertical.push(i);
