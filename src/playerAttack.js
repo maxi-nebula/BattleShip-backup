@@ -10,9 +10,9 @@ const calculateTarget = true;
 let isPlayerAttacked = false;
 let trigger = 0;
 let possibleNextTargets = [];
+let alreadyAttackedPositions = [];
 
 function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
-  console.log(`trigger is ${trigger}`);
   let isEnemyAttacked = false;
 
   logBotChosenPostions.forEach((bposition) => {
@@ -23,8 +23,7 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
 
   if (isEnemyAttacked == true) {
     messageBoard("It's a hit..");
-    grid.classList.add("mark_hit");
-    grid.innerHTML = "X";
+    grid.classList.add("mark_red");
   } else if (isEnemyAttacked == false) {
     messageBoard("It's a miss..");
   }
@@ -48,6 +47,7 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
     const alreadyAttackedPositions = logAttackedPositions(
       targetedPlayerPosition
     );
+    console.log(alreadyAttackedPositions);
 
     allPlayerpositions = removeTargetedPlayerPosition(
       allPlayerpositions,
@@ -59,19 +59,34 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
       possibleNextTargets = setNextTarget(isPlayerAttacked.botchosenPosition);
     }
   } else if (trigger == 1) {
-    console.log(possibleNextTargets);
     const targetedPlayerPosition = chooseRandomNumber(possibleNextTargets);
     possibleNextTargets = removeTargetedPlayerPosition(
       possibleNextTargets,
       targetedPlayerPosition
     );
+
     if (possibleNextTargets.length != 0) {
       trigger == 1;
       isPlayerAttacked = enemyAttack(targetedPlayerPosition, trigger);
     } else {
-      console.log("array is empty");
       trigger == 0;
-      isPlayerAttacked = enemyAttack(allPlayerpositions, trigger);
+      const targetedPlayerPosition = chooseRandomNumber(
+        allPlayerpositions,
+        trigger
+      );
+      const alreadyAttackedPositions = logAttackedPositions(
+        targetedPlayerPosition
+      );
+
+      allPlayerpositions = removeTargetedPlayerPosition(
+        allPlayerpositions,
+        targetedPlayerPosition
+      );
+      isPlayerAttacked = enemyAttack(targetedPlayerPosition);
+      trigger = isPlayerAttacked.hitTrigger;
+      if (trigger == 1) {
+        possibleNextTargets = setNextTarget(isPlayerAttacked.botchosenPosition);
+      }
     }
   }
 

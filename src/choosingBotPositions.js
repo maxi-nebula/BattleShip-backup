@@ -41,7 +41,7 @@ function choosingBotPositions() {
         rotateFactor
       );
 
-      applyStyle(bShipOnePositions, "grid-item1");
+      // applyStyle(bShipOnePositions, "grid-item1");
 
       bShipOnePositions.forEach((position) => {
         logBotChosenPostions.push(position);
@@ -68,7 +68,7 @@ function choosingBotPositions() {
         i,
         rotateFactor
       );
-      applyStyle(bShipTwoPositions, "grid-item1");
+      // applyStyle(bShipTwoPositions, "grid-item1");
       bShipTwoPositions.forEach((position) => {
         logBotChosenPostions.push(position);
       });
@@ -98,7 +98,7 @@ function choosingBotPositions() {
       bShipThreePositions.forEach((position) => {
         logBotChosenPostions.push(position);
       });
-      applyStyle(bShipThreePositions, "grid-item1");
+      //applyStyle(bShipThreePositions, "grid-item1");
 
       let x = availablePositions.length;
 
@@ -125,7 +125,7 @@ function choosingBotPositions() {
       bShipFourPositions.forEach((position) => {
         logBotChosenPostions.push(position);
       });
-      applyStyle(bShipFourPositions, "grid-item1");
+      //  applyStyle(bShipFourPositions, "grid-item1");
 
       let x = availablePositions.length;
       while (x--) {
@@ -151,7 +151,7 @@ function choosingBotPositions() {
       bShipFivePositions.forEach((position) => {
         logBotChosenPostions.push(position);
       });
-      applyStyle(bShipFivePositions, "grid-item1");
+      // applyStyle(bShipFivePositions, "grid-item1");
     }
   }
 
