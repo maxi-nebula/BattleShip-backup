@@ -50,6 +50,10 @@ function placeShips(gridValue, clkCount, rf) {
     }
 
     startButton.addEventListener("click", () => {
+      const enemyBoard = document.getElementById("container1");
+      const enemylabel = document.getElementById("enemy_name");
+      enemyBoard.style.visibility = "visible";
+      enemylabel.style.visibility = "visible";
       startGame();
     });
   }

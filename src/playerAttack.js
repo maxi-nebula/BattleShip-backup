@@ -32,7 +32,6 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
     allPlayerpositions,
     targetedPlayerPosition
   ) {
-    //  console.log(allPlayerpositions.indexOf(targetedPlayerPosition));
     allPlayerpositions.splice(
       allPlayerpositions.indexOf(targetedPlayerPosition),
       1
@@ -47,7 +46,6 @@ function playerAttack(grid, logBotChosenPostions, allPlayerpositions) {
     const alreadyAttackedPositions = logAttackedPositions(
       targetedPlayerPosition
     );
-    console.log(alreadyAttackedPositions);
 
     allPlayerpositions = removeTargetedPlayerPosition(
       allPlayerpositions,
